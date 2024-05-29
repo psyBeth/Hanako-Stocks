@@ -8,8 +8,11 @@ import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
+import { Formik } from "formik";
 
 const Login = () => {
+    const loginSchema = {};
+
     return (
         <Container maxWidth="lg">
             <Grid
@@ -46,6 +49,21 @@ const Login = () => {
                     >
                         Login
                     </Typography>
+
+                    <Formik 
+                        initialValues={{email: "", password:""}}
+                        validationSchema={loginSchema}
+                        onSubmit={(values, actions) => {
+                            //TODO login (post) req
+                            actions.resetForm()
+                            actions.setSubmitting(false)
+                            // data to global state
+                            // navigate
+                            // toast 
+                        }}
+                    >
+
+                    </Formik>
 
                     <Box
                         component="form"
