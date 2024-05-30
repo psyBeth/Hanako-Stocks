@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
-import { Formik } from "formik";
+import { Formik, Form } from "formik";
 
 const Login = () => {
     const loginSchema = {};
@@ -50,43 +50,47 @@ const Login = () => {
                         Login
                     </Typography>
 
-                    <Formik 
-                        initialValues={{email: "", password:""}}
+                    <Formik
+                        initialValues={{ email: "", password: "" }}
                         validationSchema={loginSchema}
                         onSubmit={(values, actions) => {
                             //TODO login (post) req
                             actions.resetForm()
-                            actions.setSubmitting(false)
+                            actions.setSubmitting(false) // isSubmitting
                             // data to global state
                             // navigate
                             // toast 
                         }}
                     >
-
+                        {({handleChange, values}) =>
+                            <Form>
+                                <Box
+                                    sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+                                >
+                                    <TextField
+                                        label="Email"
+                                        name="email"
+                                        id="email"
+                                        type="email"
+                                        variant="outlined"
+                                        value={values.email}
+                                        onChange={handleChange}
+                                    />
+                                    <TextField
+                                        label="password"
+                                        name="password"
+                                        id="password"
+                                        type="password"
+                                        variant="outlined"
+                                        value={values.password}
+                                        onChange={handleChange}
+                                    />
+                                    <Button variant="contained" type="submit">
+                                        Submit
+                                    </Button>
+                                </Box>
+                            </Form>}
                     </Formik>
-
-                    <Box
-                        component="form"
-                        sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-                    >
-                        <TextField
-                            label="Email"
-                            name="email"
-                            id="email"
-                            type="email"
-                            variant="outlined"
-                        />
-                        <TextField
-                            label="password"
-                            name="password"
-                            id="password"
-                            type="password"
-                            variant="outlined"
-                        />
-                        <Button variant="contained" type="submit">
-                            Submit
-                        </Button>
-                    </Box>
 
                     <Box sx={{ textAlign: "center", mt: 2 }}>
                         <Link to="/register">Do you have not an account?</Link>
