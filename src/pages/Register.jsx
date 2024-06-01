@@ -95,7 +95,7 @@ const Register = () => {
                     </Box>
 
                     <Box sx={{ textAlign: "center", mt: 2 }}>
-                        <Link to="/">Do you have an account?</Link>
+                        <Link to="/">You already have an account?</Link>
                     </Box>
                 </Grid>
 
