@@ -62,7 +62,7 @@ const Login = () => {
                             // toast 
                         }}
                     >
-                        {({handleChange, values}) =>
+                        {({handleChange, values, touched, errors}) =>
                             <Form>
                                 <Box
                                     sx={{ display: "flex", flexDirection: "column", gap: 2 }}
@@ -75,6 +75,8 @@ const Login = () => {
                                         variant="outlined"
                                         value={values.email}
                                         onChange={handleChange}
+                                        error={touched.email && Boolean(errors.email)}
+                                        helperText={errors.email}
                                     />
                                     <TextField
                                         label="password"
