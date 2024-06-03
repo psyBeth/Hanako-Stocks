@@ -9,9 +9,13 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { Formik, Form } from "formik";
+import { object, string, number, date, InferType } from 'yup';
 
 const Login = () => {
-    const loginSchema = {};
+    const loginSchema = object({
+        email: string().email().required(),
+        password: string().required()
+    });
 
     return (
         <Container maxWidth="lg">
@@ -62,7 +66,7 @@ const Login = () => {
                             // toast 
                         }}
                     >
-                        {({handleChange, values, touched, errors}) =>
+                        {({ handleChange, values, touched, errors }) =>
                             <Form>
                                 <Box
                                     sx={{ display: "flex", flexDirection: "column", gap: 2 }}
