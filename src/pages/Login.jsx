@@ -13,8 +13,14 @@ import { object, string, number, date, InferType } from 'yup';
 
 const Login = () => {
     const loginSchema = object({
-        email: string().email().required(),
-        password: string().required()
+        email: string()
+            .email("E-mail is not valid.")
+            .required("E-mail is required."),
+        password: string()
+            .required("Password is required.")
+            .min(8, "Password must contain at least 8 characters.")
+            .max(16, "Password cannot contain more than 16 characters.")
+            .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, "Passowrd must contain at least one letter and one number.")
     });
 
     return (
@@ -66,7 +72,7 @@ const Login = () => {
                             // toast 
                         }}
                     >
-                        {({ handleChange, values, touched, errors }) =>
+                        {({ handleChange, values, touched, errors, handleBlur }) =>
                             <Form>
                                 <Box
                                     sx={{ display: "flex", flexDirection: "column", gap: 2 }}
@@ -79,6 +85,7 @@ const Login = () => {
                                         variant="outlined"
                                         value={values.email}
                                         onChange={handleChange}
+                                        onBlur={handleBlur}
                                         error={touched.email && Boolean(errors.email)}
                                         helperText={errors.email}
                                     />
@@ -90,6 +97,9 @@ const Login = () => {
                                         variant="outlined"
                                         value={values.password}
                                         onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        error={touched.password && Boolean(errors.password)}
+                                        helperText={errors.password}
                                     />
                                     <Button variant="contained" type="submit">
                                         Submit
