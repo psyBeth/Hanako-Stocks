@@ -65,7 +65,6 @@ const Login = () => {
                         validationSchema={loginSchema}
                         onSubmit={(values, actions) => {
                             //TODO login (post) req
-                            //? swagger usage 
                             actions.resetForm()
                             actions.setSubmitting(false) // isSubmitting
                             // data to global state
