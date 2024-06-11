@@ -1,11 +1,14 @@
 import axios from "axios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import { useNavigate } from "react-router-dom";
+import { fetchStart } from "../features/authSlice";
 
 
 const useAuthCalls = () => {
 
     const login = async (userInfo) => {
+        fetchStart();
+
         const navigate = useNavigate();
     
         try {
