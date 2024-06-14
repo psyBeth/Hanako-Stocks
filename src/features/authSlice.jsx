@@ -40,5 +40,5 @@ const authSlice = createSlice({
     },
 });
 
-export const { fetchStart, loginSuccess, fetchFail } = authSlice.actions;
+export const { fetchStart, loginSuccess, fetchFail, registerSuccess, logoutSuccess } = authSlice.actions;
 export default authSlice.reducer;
