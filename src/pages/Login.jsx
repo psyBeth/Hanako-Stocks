@@ -14,7 +14,7 @@ import useAuthCalls from "../service/useAuthCalls";
 
 const Login = () => {
 
-    const { login } = useAuthCalls()
+    const { login } = useAuthCalls();
 
     const loginSchema = object({
         email: string()

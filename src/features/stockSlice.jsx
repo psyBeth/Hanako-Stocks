@@ -8,4 +8,4 @@ const stockSlice = () => {
   )
 };
 
-export default stockSlice
+export default stockSlice;

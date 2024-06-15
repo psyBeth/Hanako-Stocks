@@ -64,6 +64,7 @@ const useAuthCalls = () => {
     };
 
   return { login, register, logout };
+  
 };
 
 export default useAuthCalls;
