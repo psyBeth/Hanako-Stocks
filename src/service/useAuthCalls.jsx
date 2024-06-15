@@ -34,19 +34,24 @@ const useAuthCalls = () => {
 
         try {
             const { data } = await axios.post(  //! ISSUE HERE 
-                `${process.env.REACT_APP_BASE_URL}/users`,
+                `${process.env.REACT_APP_BASE_URL}users`,
                 userInfo
             );
             dispatch(registerSuccess(data));
+            toastSuccessNotify("Registered successfully.");
             navigate("/stock");
         } catch (error) {
-          dispatch(fetchFail());  
+          dispatch(fetchFail()); 
+          toastErrorNotify("Registry failed.") 
+          console.log(error);
         };
     };
 
-    const logout = async () => {};
+    const logout = async () => {
+        dispatch(fetchStart());
+    };
 
-  return { login, register }
-}
+  return { login, register, logout }
+};
 
-export default useAuthCalls
+export default useAuthCalls;
