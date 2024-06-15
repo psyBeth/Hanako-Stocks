@@ -3,12 +3,13 @@ import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import { useNavigate } from "react-router-dom";
 import { fetchFail, fetchStart, loginSuccess, registerSuccess } from "../features/authSlice";
 import { useDispatch } from "react-redux";
-
+import useAxios from "./useAxios";
 
 const useAuthCalls = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { axiosWithToken, axiosPublic } = useAxios();
 
     const login = async (userInfo) => {
 
@@ -33,10 +34,11 @@ const useAuthCalls = () => {
         dispatch(fetchStart());
 
         try {
-            const { data } = await axios.post(  //! ISSUE HERE 
-                `${process.env.REACT_APP_BASE_URL}users`,
-                userInfo
-            );
+            // const { data } = await axios.post(  //! ISSUE HERE 
+            //     `${process.env.REACT_APP_BASE_URL}users`,
+            //     userInfo
+            // );
+            const { data } = await axiosPublic.post("/users/", userInfo);
             dispatch(registerSuccess(data));
             toastSuccessNotify("Registered successfully.");
             navigate("/stock");
