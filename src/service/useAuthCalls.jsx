@@ -34,10 +34,6 @@ const useAuthCalls = () => {
         dispatch(fetchStart());
 
         try {
-            // const { data } = await axios.post(  //! ISSUE HERE 
-            //     `${process.env.REACT_APP_BASE_URL}users`,
-            //     userInfo
-            // );
             const { data } = await axiosPublic.post("/users/", userInfo);
             dispatch(registerSuccess(data));
             toastSuccessNotify("Registered successfully.");
