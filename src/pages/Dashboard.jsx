@@ -20,7 +20,7 @@ function Dashboard() {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         HANAKO STOCKS
                     </Typography>
-                    {user && <Button color="inherit" onClick={() => logout()}>
+                    {user && <Button color="inherit" onClick={logout}>
                         Logout
                     </Button>}
                 </Toolbar>
