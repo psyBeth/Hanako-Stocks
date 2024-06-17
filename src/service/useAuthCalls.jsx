@@ -2,7 +2,7 @@ import axios from "axios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import { useNavigate } from "react-router-dom";
 import { fetchFail, fetchStart, loginSuccess, logoutSuccess, registerSuccess } from "../features/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useAxios from "./useAxios";
 
 const useAuthCalls = () => {
@@ -10,6 +10,7 @@ const useAuthCalls = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { axiosWithToken, axiosPublic } = useAxios();
+    const { token } = useSelector((state) => state.auth);
 
     const login = async (userInfo) => {
 
@@ -52,10 +53,10 @@ const useAuthCalls = () => {
             const { data } = await axios.get(
                 `${process.env.REACT_APP_BASE_URL}/auth/logout`,
                 {
-                    headers: { Authorization: `Token ${myToken}` }
+                    headers: { Authorization: `Token ${token}` }
                 }
             );
-            dispatch(registerSuccess(data));
+            dispatch(logoutSuccess());
             toastSuccessNotify("Logged out successfully.");
             navigate("/")
         } catch (error) {
