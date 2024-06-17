@@ -49,9 +49,15 @@ const useAuthCalls = () => {
         dispatch(fetchStart());
 
         try {
-            await axiosWithToken("/auth/logout/");
+            const { data } = await axios.get(
+                `${process.env.REACT_APP_BASE_URL}/auth/logout`,
+                {
+                    headers: { Authorization: `Token ${myToken}` }
+                }
+            );
+            dispatch(registerSuccess(data));
             toastSuccessNotify("Logged out successfully.");
-            dispatch(logoutSuccess());
+            navigate("/")
         } catch (error) {
             dispatch(fetchFail());
             toastErrorNotify("Logout failed.");
