@@ -51,7 +51,7 @@ const useAuthCalls = () => {
 
         try {
             const { data } = await axios.get(
-                `${process.env.REACT_APP_BASE_URL}/auth/logout`,
+                `${process.env.REACT_APP_BASE_URL}auth/logout`,
                 {
                     headers: { Authorization: `Token ${token}` }
                 }
