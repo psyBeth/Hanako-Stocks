@@ -14,17 +14,17 @@ const valueFormatter = function (number) {
 };
 
 const Charts = () => {
-  const { sales, purchases } = useSelector((state) => state.stock)
+  const { sales, purchases } = useSelector((state) => state.stock) || {};
 
-  const salesData = sales?.map((item) => ({
+  const salesData = sales ? sales.map((item) => ({
     date: new Date(item.createdAt).toLocaleDateString("tr-TR"),
     amount: item.amount,
-  }));
+  })) : [];
 
-  const purchasesData = purchases?.map((item) => ({
+  const purchasesData = purchases ? purchases.map((item) => ({
     date: new Date(item.createdAt).toLocaleDateString("tr-TR"),
     amount: item.amount,
-  }));
+  })) : [];
 
   return (
     <Container>
