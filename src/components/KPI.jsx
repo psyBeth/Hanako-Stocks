@@ -6,10 +6,10 @@ import { Avatar, Box, Paper, Stack, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const KPI = () => {
-  const { sales, purchases } = useSelector((state) => state.stock);
+  const { sales = [], purchases = [] } = useSelector((state) => state.stock);
 
-  const totalSales = sales?.reduce((acc, item) => acc + item.amount, 0);
-  const totalPurchases = purchases?.reduce((acc, item) => acc + item.amount, 0);
+  const totalSales = sales.reduce((acc, item) => acc + item.amount, 0);
+  const totalPurchases = purchases.reduce((acc, item) => acc + item.amount, 0);
 
   const kpiData = [
     {
@@ -36,9 +36,7 @@ const KPI = () => {
       bgColor: amber[100],
       color: amber[700],
     },
-  ]
-
-  console.log(purchases);
+  ];
 
   return (
     <Stack
@@ -79,7 +77,7 @@ const KPI = () => {
         </Paper>
       ))}
     </Stack>
-  )
+  );
 };
 
 export default KPI;

@@ -9,7 +9,7 @@ const Home = () => {
     useEffect(() => {
         getStocks("sales")
         getStocks("purchases")
-    }, []);
+    }, [getStocks]);
 
     return (
         <>
