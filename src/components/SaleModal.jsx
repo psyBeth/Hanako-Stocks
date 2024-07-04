@@ -20,15 +20,15 @@ function SaleModal({ open, handleClose, info, setInfo }) {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         if (info._id) {
-            putStock("sales", info)
+            putStock("sales", info);
         } else {
-            postStock("sales", info)
+            postStock("sales", info);
         }
 
-        handleClose()
+        handleClose();
     };
 
     return (

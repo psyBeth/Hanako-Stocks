@@ -1,15 +1,14 @@
-import React from "react";
-import useStockCalls from "../service/useStockCalls";
 import { useSelector } from "react-redux";
-import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
+import useStockCalls from "../service/useStockCalls";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { btnStyle } from "../styles/globalStyles";
+import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
 
-const SaleTable = ({ handleOpen, setInfo }) => {
+const PurchaseTable = ({ setInfo, handleOpen }) => {
+    const { purchases } = useSelector((state) => state.stock);
     const { deleteStock } = useStockCalls();
-    const { sales } = useSelector((state) => state.stock);
 
     const getRowId = (row) => row._id;
 
@@ -20,9 +19,19 @@ const SaleTable = ({ handleOpen, setInfo }) => {
             minWidth: 150,
             headerAlign: "center",
             align: "center",
-            renderCell: ({ row }) => new Date(row.createdAt).toLocaleString("de-DE"),
+            renderCell: ({ row }) => {
+                return new Date(row.createdAt).toLocaleString("de-DE")
+            },
         },
-
+        {
+            field: "firmId",
+            headerName: "Firm",
+            flex: 1,
+            minWidth: 100,
+            headerAlign: "center",
+            align: "center",
+            renderCell: ({ row }) => row?.firmId?.name,
+        },
         {
             field: "brandId",
             headerName: "Brand",
@@ -33,7 +42,7 @@ const SaleTable = ({ handleOpen, setInfo }) => {
             renderCell: ({ row }) => row?.brandId?.name,
         },
         {
-            field: "productId",
+            field: "productID",
             headerName: "Product",
             flex: 1,
             minWidth: 100,
@@ -68,35 +77,36 @@ const SaleTable = ({ handleOpen, setInfo }) => {
             minWidth: 40,
             headerAlign: "center",
             align: "center",
-            renderCell: ({ row: { brandId, price, quantity, productId, _id } }) => {
+            renderCell: ({
+                row: { brandId, productId, quantity, price, firmId, _id },
+            }) => {
                 return [
                     <GridActionsCellItem
-                        key="edit"
+                        key={"edit"}
                         icon={<EditIcon />}
                         label="Edit"
                         onClick={() => {
                             handleOpen()
-                            setInfo({ brandId, price, quantity, productId, _id })
+                            setInfo({ _id, brandId, productId, quantity, price, firmId })
                         }}
                         sx={btnStyle}
                     />,
                     <GridActionsCellItem
-                        key="delete"
+                        key={"delete"}
                         icon={<DeleteIcon />}
                         label="Delete"
-                        onClick={() => deleteStock("sales", _id)}
+                        onClick={() => deleteStock("purchases", _id)}
                         sx={btnStyle}
                     />,
                 ]
             },
         },
-    ];
-    
+    ]
     return (
         <Box sx={{ width: "100%", mt: 4 }}>
             <DataGrid
                 autoHeight
-                rows={sales}
+                rows={purchases}
                 columns={columns}
                 pageSizeOptions={[20, 50, 75, 100]}
                 disableRowSelectionOnClick
@@ -107,4 +117,4 @@ const SaleTable = ({ handleOpen, setInfo }) => {
     )
 };
 
-export default SaleTable;
+export default PurchaseTable;
