@@ -13,7 +13,6 @@ import TableSkeleton, {
 } from "../components/DataFetchMsg";
 
 const Firms = () => {
-  // const { getFirms, getSales } = useStockCalls();
   const { getStocks } = useStockCalls();
   const { firms, error, loading } = useSelector((state) => state.stock);
 
@@ -32,7 +31,6 @@ const Firms = () => {
   };
 
   useEffect(() => {
-    // getFirms()
     getStocks("firms")
   }, []);
 

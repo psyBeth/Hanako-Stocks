@@ -12,28 +12,6 @@ const useStockCalls = () => {
     const { axiosWithToken } = useAxios();
     const dispatch = useDispatch();
 
-    //   const getFirms = async () => {
-    //     dispatch(fetchStart())
-    //     try {
-    //       const { data } = await axiosWithToken("/firms/")
-    //       dispatch(getFirmsSuccess(data.data))
-    //     } catch (error) {
-    //       dispatch(fetchFail())
-    //       toastErrorNotify("Firm bilgileri çekilemedi.")
-    //     }
-    //   }
-
-    //   const getSales = async () => {
-    //     dispatch(fetchStart())
-    //     try {
-    //       const { data } = await axiosWithToken("/sales/")
-    //       dispatch(getSalesSuccess(data.data))
-    //     } catch (error) {
-    //       dispatch(fetchFail())
-    //       toastErrorNotify("Sales bilgileri çekilemedi.")
-    //     }
-    //   }
-
     const getStocks = async (url = "firms") => {
         dispatch(fetchStart())
         try {

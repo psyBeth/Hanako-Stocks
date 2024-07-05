@@ -28,11 +28,6 @@ const Purchases = () => {
   };
 
   useEffect(() => {
-    // getStocks("products")
-    // getStocks("purchases")
-    // getStocks("brands")
-    // getStocks("firms")
-
     getProPurBranFirm()
   }, []); // eslint-disable-line
 

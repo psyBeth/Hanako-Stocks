@@ -102,6 +102,7 @@ const PurchaseTable = ({ setInfo, handleOpen }) => {
             },
         },
     ]
+    
     return (
         <Box sx={{ width: "100%", mt: 4 }}>
             <DataGrid

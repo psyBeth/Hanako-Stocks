@@ -9,7 +9,6 @@ const useAuthCalls = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { axiosWithToken, axiosPublic } = useAxios();
-    // const { token } = useSelector((state) => state.auth);
 
     const login = async (userInfo) => {
 

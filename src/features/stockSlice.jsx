@@ -19,23 +19,13 @@ const stockSlice = createSlice({
       state.error = false
       state.loading = true
     },
-    // getFirmsSuccess: (state, { payload }) => {
-    //   state.firms = payload
-    //   state.loading = false
-    // },
-    // getSalesSuccess: (state, { payload }) => {
-    //   state.sales = payload
-    //   state.loading = false
-    // },
-    // getStockSuccess: (state, { payload: { url, apiData } }) => {
-    //   state[url] = apiData
-    //   state.loading = false
-    // },
+
     getStockSuccess: (state, action) => {
       state[action.payload.url] = action.payload.apiData
       state.loading = false
       state.error = false
     },
+
     getProPurBranFirmSuccess: (state, { payload }) => {
       state.loading = false
       state.products = payload[0]
