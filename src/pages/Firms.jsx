@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Grid } from "@mui/material";
 import FirmCard from "../components/FirmCard";
 import FirmModal from "../components/FirmModal";
-import TableSkeleton, {
+import {
   CardSkeleton,
   ErrorMsg,
   NoDataMsg,
@@ -32,7 +32,7 @@ const Firms = () => {
 
   useEffect(() => {
     getStocks("firms")
-  }, []);
+  }, [getStocks]);
 
   return (
     <div>
