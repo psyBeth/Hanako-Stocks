@@ -1,3 +1,12 @@
+# TODO TODO TODO TODO
+
+- login page styling edit
+- register page update
+- tailwind colours re-think
+- pre-production revision
+
+# END TODO
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
