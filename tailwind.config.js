@@ -44,7 +44,7 @@ module.exports = {
                     },
                     newbg: {
                         default: "#fb9062",
-                    }
+                    },
                 },
 
                 // dark mode

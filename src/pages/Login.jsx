@@ -27,7 +27,7 @@ const Login = () => {
     });
 
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" color="newbg">
             <Grid
                 container
                 justifyContent="center"
