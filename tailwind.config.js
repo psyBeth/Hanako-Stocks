@@ -42,6 +42,9 @@ module.exports = {
                         strong: colors.gray[900],
                         inverted: colors.white,
                     },
+                    newbg: {
+                        default: "#fb9062",
+                    }
                 },
 
                 // dark mode
