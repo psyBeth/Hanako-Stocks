@@ -3,7 +3,6 @@ import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import useStockCalls from "../service/useStockCalls";
 import { useSelector } from "react-redux";
-import { Grid } from "@mui/material";
 import ProductModal from "../components/ProductModal";
 import ProductTable from "../components/ProductTable";
 import TableSkeleton, { ErrorMsg, NoDataMsg } from "../components/DataFetchMsg";
@@ -27,7 +26,7 @@ const Products = () => {
     getStocks("products")
     getStocks("categories")
     getStocks("brands")
-  }, []);
+  }, [getStocks]);
 
   return (
     <div>
