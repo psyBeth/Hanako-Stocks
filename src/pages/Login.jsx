@@ -27,12 +27,11 @@ const Login = () => {
     });
 
     return (
-        <Container maxWidth="lg" backgroundcolor="newbg">
+        <Container maxWidth="lg">
             <Grid
                 container
                 justifyContent="center"
                 direction="row-reverse"
-                backgroundcolor="newbg"
                 sx={{
                     height: "100vh",
                     p: 2,
