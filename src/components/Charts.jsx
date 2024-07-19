@@ -2,13 +2,6 @@ import { Grid, Container } from "@mui/material";
 import { AreaChart, Card, Title } from "@tremor/react";
 import { useSelector } from "react-redux";
 
-// const chartdata = [
-//   {
-//     date: "Jan 22",
-//     price: "",
-//   },
-// ];
-
 const valueFormatter = function (number) {
   return "$ " + new Intl.NumberFormat("us").format(number).toString()
 };

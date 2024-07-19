@@ -8,7 +8,6 @@ import ProductTable from "../components/ProductTable";
 import TableSkeleton, { ErrorMsg, NoDataMsg } from "../components/DataFetchMsg";
 
 const Products = () => {
-  // const { getFirms, getSales } = useStockCalls();
   const { getStocks } = useStockCalls();
   const { products, error, loading } = useSelector((state) => state.stock);
 
