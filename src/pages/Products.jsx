@@ -21,6 +21,7 @@ const Products = () => {
     setInfo(initialState)
   };
 
+  //! ERROR ERROR DATA PULL ISSUE 
   useEffect(() => {
     getStocks("products")
     getStocks("categories")
