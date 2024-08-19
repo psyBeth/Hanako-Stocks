@@ -57,12 +57,16 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+                    <Typography variant="h4" noWrap component="div" sx={{ flexGrow: 1 }}>
                         HANAKO STOCKS
                     </Typography>
 
                     {user && (
-                        <Button color="inherit" onClick={logout}>
+                        <Button 
+                        color="inherit" 
+                        sx={{fontSize: '1.5rem'}} 
+                        onClick={logout}
+                        >
                             Logout
                         </Button>
                     )}
