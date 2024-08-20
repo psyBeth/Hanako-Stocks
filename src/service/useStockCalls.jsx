@@ -15,12 +15,13 @@ const useStockCalls = () => {
     const getStocks = async (url = "firms") => {
         dispatch(fetchStart())
         try {
-            const { data } = await axiosWithToken(`/${url}/`)
+            const { data } = await axiosWithToken(`/${url}/`) //! error starts here 
             const apiData = data.data
             dispatch(getStockSuccess({ apiData, url }))
         } catch (error) {
             dispatch(fetchFail())
             toastErrorNotify(`${url} data cannot be pulled.`)
+            console.log(error);
         }
     }
 
