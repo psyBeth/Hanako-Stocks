@@ -1,6 +1,6 @@
 # TODO TODO TODO TODO
 
-- swagger revision
+- swagger revision ***done*** JWT problem --> start working on the backend 
 
 - readme documentation will be built
 - login page styling edit (done?)
